@@ -96,17 +96,8 @@ def main():
                 if not web_df.empty:
                     st.success(f"Found {len(web_df)} linked mentions")
                     
-                    # Display the table with clickable URLs
-                    for idx, row in web_df.iterrows():
-                        with st.container():
-                            st.markdown(f"**{row['Title']}**")
-                            if row['URL']:
-                                st.markdown(f"🔗 [{row['Domain']}]({row['URL']})")
-                            if row['Snippet']:
-                                st.markdown(f"*{row['Snippet'][:200]}{'...' if len(row['Snippet']) > 200 else ''}*")
-                            if row['Published Date']:
-                                st.caption(f"Published: {row['Published Date']}")
-                            st.divider()
+                    # Display the table
+                    st.dataframe(web_df, use_container_width=True)
                     
                     # Download button for web results
                     excel_data = convert_df_to_excel(web_df)
@@ -127,9 +118,8 @@ def main():
                 if not queries_df.empty:
                     st.success(f"Found {len(queries_df)} related queries")
                     
-                    # Display queries as a numbered list
-                    for idx, query in enumerate(queries_df['Related Queries'], 1):
-                        st.markdown(f"{idx}. {query}")
+                    # Display the table
+                    st.dataframe(queries_df, use_container_width=True)
                     
                     # Download button for related queries
                     excel_data_queries = convert_df_to_excel(queries_df)
@@ -140,17 +130,7 @@ def main():
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     )
                 else:
-                    st.warning("No related queries found in the uploaded file.")
-            
-            # Raw data view (optional)
-            with st.expander("🔍 View Raw Data Tables"):
-                if not web_df.empty:
-                    st.subheader("Linked Mentions Table")
-                    st.dataframe(web_df, use_container_width=True)
                 
-                if not queries_df.empty:
-                    st.subheader("Related Queries Table")
-                    st.dataframe(queries_df, use_container_width=True)
         
         except json.JSONDecodeError:
             st.error("❌ Invalid JSON file. Please upload a valid JSON file from Perplexity.")
