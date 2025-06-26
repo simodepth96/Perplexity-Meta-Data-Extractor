@@ -18,4 +18,5 @@ javascript:(async()=>{const s=(location.pathname.match(/\/search\/([^/?#]+)/)||[
 ## 🔗 Link to the App 
 
 - [Perplexity Meta Data Extractor (Streamlit)](https://perplexity-meta-data-extractor.streamlit.app/)
-- [GitHub: ChatGPT Mentions Extractor](https://github.com/simodepth96/ChatGPT-Mentions-Extractor/blob/main/app.py)
+- [GitHub: Perplexity Linked Citations](https://github.com/simodepth96/Perplexity-Meta-Data-Extractor/blob/main/linked_citations.py)
+- [GitHub: Perplexity Linked Citations](https://github.com/simodepth96/Perplexity-Meta-Data-Extractor/blob/main/linked_citations.py)
