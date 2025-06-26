@@ -108,7 +108,8 @@ def main():
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     )
                 else:
-                    st.warning("No linked mentions found in the uploaded file.")
+                    st.warning("No related queries found in the uploaded file.")
+                st.warning("No linked mentions found in the uploaded file.")
             
             # Extract and display related queries
             with col2:
